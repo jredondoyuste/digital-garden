@@ -18,13 +18,6 @@ take a peek behind the curtain
   {% endfor %}
 </ul>
 
-<span style="font-size: 0.95em; color: #666;">
-  I'd love to know what you are thinking about! Feel free to reach out at
-  <a href="mailto:your@email.com" style="background: #dfc415ff; color: #222; padding: 0.15em 0.4em; border-radius: 3px; text-decoration: none; font-weight: 500;">
-    jaime.redondo.yuste@gmail.com
-  </a>
-</span>
-
 <style>
   .wrapper {
     max-width: 46em;
