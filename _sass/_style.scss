@@ -1,26 +1,39 @@
-$color-primary: hsl(0, 0%, 10%);
-$color-text: hsl(0, 0%, 20%);
-$color-subtext: hsl(0, 0%, 30%);
+$color-primary: #b90202;
+$color-text: #121214;
+$color-subtext: #6E6E73;
 $color-border: hsl(0, 0%, 85%);
-$color-box-background: mix($color-primary, white, 4%);
+$color-box-background: #f7f7f3;
 $border-radius: 4px;
-$font-family: 'Saira' , 'Didot', sans-serif;
-// #-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
-//   sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+$font-family: 'Exo', 'Saira' , 'Didot', sans-serif;
 
 body {
-  box-sizing: content-box;
-  font-family: $font-family;
-  margin: 0 auto;
-  line-height: 1.7;
-  padding: 4vh 6vw;
-  overflow-x: hidden;
-  color: $color-text;
-  font-size: 1rem;
-  max-width: 63em;
+    min-height: 100vh;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-text-size-adjust: 100%;
+    background-color: $color-box-background;
+    font-family: $font-family;
+    color: $color-text;
+    font-size: 11pt;
+    font-weight: 400;
+    font-feature-settings: "onum" 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
 
   @media (min-width: 820px) {
-    font-size: 1.2rem;
+    font-size: 12pt;
+  }
+}
+
+@supports (font-variant-numeric: oldstyle-nums) {
+  body {
+    font-feature-settings: normal;
+    font-variant-numeric: oldstyle-nums;
   }
 }
 
@@ -28,13 +41,37 @@ time {
   display: block;
   color: $color-subtext;
   margin: 0.5em 0 1em;
+  font-size: 11pt;
+  font-weight: 600;
+  font-variant: small-caps;
 }
 
 footer {
-  margin: 2em 0;
+  margin-top: 3em;
+  padding-bottom: 4em;
   font-size: 0.8em;
-  color: mix($color-text, white, 80%);
-  padding-top: 1em;
+  text-align: center;
+  color: $color-subtext;
+}
+
+.links {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.links a {
+  color: $color-text;
+  text-decoration: none;
+  letter-spacing: normal;
+  font-size: 12pt;
+  &:after {
+    content: "" !important;
+  }
+}
+
+.links a:hover {
+  color: $color-primary;
 }
 
 img {
@@ -76,27 +113,63 @@ h6 {
   padding-bottom: 0;
 }
 
+h1 {
+  font-weight: 600;
+  font-size: 16pt;
+  font-variant: small-caps;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 14pt;
+  font-variant: small-caps;
+}
+
 a {
-  transition: background 300ms;
+  // transition: background 300ms;
   padding: 0 0.1em;
   text-decoration: none;
-  border-bottom: 1px solid $color-border;
   color: $color-primary;
   &:hover {
-    color: black !important;
-    background: #fffaf1;
+    color: #ffffff;
+    background: $color-primary;
+    text-decoration: none;
+    // padding: 3px 0.5px;
+    border-radius: $border-radius;
+    -webkit-transition-duration: 300ms;
+    -o-transition-duration: 300ms;
+    -moz-transition-duration: 300ms;
+    transition-duration: 300ms;
   }
   &:after {
     position: relative;
     top: -0.5em;
     font-size: 0.7em;
     content: "↗";
-    color: #aaaaaa;
   }
   &.internal-link:after,
   &.footnote:after,
   &.reversefootnote:after {
     content: "";
+  }
+}
+
+a.internal-link {
+  color: $color-primary;
+  border-bottom: none;
+  background: none !important;
+  padding: 0;
+  white-space: nowrap;
+  &:hover {
+    color: #ffffff;
+    background: $color-primary !important;
+    text-decoration: none;
+    // padding: 3px 0.5px;
+    border-radius: $border-radius;
+    -webkit-transition-duration: 300ms;
+    -o-transition-duration: 300ms;
+    -moz-transition-duration: 300ms;
+    transition-duration: 300ms;
   }
 }
 
@@ -109,12 +182,50 @@ nav {
   margin: 1em 0 3em;
 }
 
+.header {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-left: 0;
+  font-weight: 500;
+  box-sizing: border-box;
+  text-align: right; 
+  color: #6E6E73;
+  font-size: 13pt;
+  position: relative;
+  --f: 30;
+  --t: 0.5;
+}
+
+.ringdown {
+  // flex-shrink: 0;
+  flex: 1 1 0;
+  height: 18px;
+  width: 100%;
+  // flex-grow: 1;
+  margin-right: 1em;
+  transform: translateY(30%);
+}
+
+.box {
+    max-width: 50vw;
+    min-width: 250px;
+    /* max-height: 93vh; */
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: stretch;
+    overflow: visible;
+}
+
 #notes-entry-container {
   display: grid;
   grid-gap: 2em;
   grid-template-areas:
     "content"
     "side";
+  font-weight: 300;
+  font-size: 11pt;
 
   @media (min-width: 700px) {
     grid-template-columns: 3fr 1fr;
@@ -124,6 +235,8 @@ nav {
 
 .backlink-box {
   background: $color-box-background;
+  // background: $color-primary;
+  color:#121214;
   padding: 1em;
   border-radius: $border-radius;
 }
