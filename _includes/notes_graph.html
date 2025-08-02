@@ -63,6 +63,8 @@
         const graphData = {% include notes_graph.json %}
         let nodesData = graphData.nodes;
         let linksData = graphData.edges;
+        console.log("nodesData", nodesData);
+        console.log("linksData", linksData);
 
         const nodeSize = {};
 
@@ -183,7 +185,7 @@
 
         window.onresize = reportWindowSize;
 
-        const svg = d3.select("svg");
+        const svg = d3.select("#graph-wrapper > svg");
         const width = Number(svg.attr("width"));
         const height = Number(svg.attr("height"));
         let zoomLevel = 1;

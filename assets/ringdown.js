@@ -26,13 +26,14 @@ function drawWigglyLine() {
   svg.innerHTML = `<path d="${path}" stroke="#6E6E73" fill="none" stroke-width="1"/>`;
 }
 
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(drawWigglyLine);
-    } else {
-      drawWigglyLine();
-    }
-  }, 10);
-});
+// window.addEventListener('load', () => {
+//   setTimeout(() => {
+//     if (document.fonts && document.fonts.ready) {
+//       document.fonts.ready.then(drawWigglyLine);
+//     } else {
+//       drawWigglyLine();
+//     }
+//   }, 10);
+// });
 window.addEventListener('resize', drawWigglyLine);
+window.addEventListener('load', drawWigglyLine);
